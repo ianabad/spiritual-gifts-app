@@ -1,1015 +1,898 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Spiritual Gifts Assessment — Faith Life Community Ministries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
-    /* ── Reset & base ──────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:   #1B3A6B;
-      --gold:   #C9A227;
-      --gold-lt:#F5E5A0;
-      --lgray:  #F4F5F7;
-      --dgray:  #555;
-      --white:  #fff;
-      --green:  #2E7D32;
-      --radius: 10px;
-      --shadow: 0 4px 18px rgba(0,0,0,.10);
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--lgray);
-      color: #1a1a1a;
-      min-height: 100vh;
-    }
+/* ═══════════════════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:    #0E2B5C;
+  --navy2:   #1B3A6B;
+  --navy3:   #2a5298;
+  --gold:    #C9A227;
+  --gold2:   #F0C84A;
+  --gold-lt: #FEF3C7;
+  --bg:      #EEF1F8;
+  --card:    #FFFFFF;
+  --lgray:   #F4F6FB;
+  --border:  #E2E8F0;
+  --dgray:   #64748B;
+  --text:    #1E293B;
+  --radius:  14px;
+  --radius-sm:8px;
+  --shadow:  0 4px 24px rgba(14,43,92,.10);
+  --shadow-lg:0 8px 40px rgba(14,43,92,.18);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 
-    /* ── Screens ───────────────────────────────────────────────── */
-    .screen { display: none; }
-    .screen.active { display: block; }
+/* ═══════════════════════════════════════════════════════════
+   SCREENS
+═══════════════════════════════════════════════════════════ */
+.screen{display:none;animation:fadeUp .45s ease}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-    /* ── Top nav bar ───────────────────────────────────────────── */
-    .topbar {
-      background: var(--navy);
-      color: var(--white);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,.25);
-    }
-    .topbar-brand {
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: .2px;
-    }
-    .topbar-sub {
-      font-size: 11px;
-      color: var(--gold);
-      font-style: italic;
-    }
-    .topbar-progress {
-      text-align: right;
-      font-size: 12px;
-      color: var(--gold);
-    }
-    .topbar-gold-line {
-      height: 3px;
-      background: var(--gold);
-      position: sticky; top: 52px; z-index: 99;
-    }
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL TOPBAR
+═══════════════════════════════════════════════════════════ */
+.topbar{
+  background:var(--navy);
+  padding:0 28px;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 16px rgba(0,0,0,.3);
+}
+.topbar-logo{display:flex;align-items:center;gap:10px}
+.topbar-cross{font-size:18px;color:var(--gold)}
+.topbar-name{font-size:14px;font-weight:700;color:#fff;letter-spacing:.2px}
+.topbar-tag{font-size:10px;color:var(--gold);font-weight:400}
+.topbar-pill{
+  font-size:11px;font-weight:600;
+  background:rgba(201,162,39,.18);
+  color:var(--gold2);
+  border:1px solid rgba(201,162,39,.35);
+  border-radius:99px;padding:4px 12px;
+}
+.gold-strip{height:3px;background:linear-gradient(to right,var(--gold),var(--gold2),var(--gold));position:sticky;top:56px;z-index:199}
 
-    /* ── Welcome Screen ────────────────────────────────────────── */
-    .welcome-wrap {
-      max-width: 680px;
-      margin: 40px auto;
-      padding: 0 16px 60px;
-    }
-    .hero-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .hero-banner {
-      background: linear-gradient(135deg, var(--navy) 60%, #2a5298);
-      color: var(--white);
-      padding: 40px 36px 36px;
-      text-align: center;
-    }
-    .hero-banner h1 {
-      font-size: 26px;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .hero-banner p {
-      font-size: 14px;
-      color: var(--gold);
-      font-style: italic;
-    }
-    .hero-body { padding: 28px 32px; }
+/* ═══════════════════════════════════════════════════════════
+   SCREEN 1 — WELCOME
+═══════════════════════════════════════════════════════════ */
+.welcome-hero{
+  background:linear-gradient(155deg,#071a3e 0%,var(--navy) 50%,#1a3f7a 100%);
+  padding:60px 24px 80px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.welcome-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+.welcome-hero::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;
+  background:var(--bg);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.hero-icon{font-size:52px;margin-bottom:16px;display:block;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.welcome-hero h1{
+  font-size:clamp(24px,5vw,36px);font-weight:900;
+  color:#fff;line-height:1.15;margin-bottom:10px;
+}
+.welcome-hero h1 span{color:var(--gold2)}
+.welcome-hero p{font-size:14px;color:#a0b8d8;line-height:1.6;max-width:420px;margin:0 auto}
 
-    .scale-box {
-      background: var(--lgray);
-      border-radius: 8px;
-      padding: 16px 20px;
-      margin-bottom: 22px;
-      text-align: center;
-    }
-    .scale-box h3 {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--navy);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .scale-items {
-      display: flex;
-      justify-content: space-between;
-      gap: 4px;
-    }
-    .scale-item {
-      flex: 1;
-      background: var(--white);
-      border-radius: 6px;
-      padding: 8px 4px;
-      text-align: center;
-      border: 1.5px solid #e0e0e0;
-    }
-    .scale-num {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .scale-label {
-      font-size: 9px;
-      color: var(--dgray);
-      margin-top: 3px;
-    }
+.welcome-body{max-width:640px;margin:-10px auto 0;padding:0 16px 60px}
 
-    .steps { margin-bottom: 22px; }
-    .step {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .step:last-child { border-bottom: none; }
-    .step-num {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .step-text { font-size: 14px; color: #333; line-height: 1.4; }
+/* Name card */
+.name-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:24px 26px;margin-bottom:16px;
+}
+.name-card label{display:block;font-size:12px;font-weight:700;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px}
+.name-card input{
+  width:100%;padding:12px 16px;
+  border:2px solid var(--border);border-radius:var(--radius-sm);
+  font-size:15px;font-family:inherit;color:var(--text);
+  transition:border-color .2s;
+}
+.name-card input:focus{outline:none;border-color:var(--gold)}
 
-    .name-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
-    .name-row label { font-size: 13px; font-weight: 600; color: var(--navy); }
-    .name-row input {
-      flex: 1;
-      min-width: 180px;
-      padding: 9px 12px;
-      border: 1.5px solid #ccc;
-      border-radius: 7px;
-      font-size: 14px;
-      transition: border-color .2s;
-    }
-    .name-row input:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
+/* Scale card */
+.scale-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:22px 26px;margin-bottom:16px;
+}
+.scale-card h3{font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--navy);text-transform:uppercase;margin-bottom:14px}
+.scale-row{display:flex;gap:6px}
+.scale-item{
+  flex:1;background:var(--lgray);border-radius:10px;
+  padding:12px 4px;text-align:center;
+  border:2px solid transparent;transition:border-color .15s;
+}
+.scale-num{font-size:22px;font-weight:900;color:var(--gold);line-height:1}
+.scale-lbl{font-size:9px;color:var(--dgray);margin-top:4px;line-height:1.3}
 
-    .btn-start {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      background: var(--gold);
-      color: var(--navy);
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      letter-spacing: .3px;
-      transition: background .15s, transform .1s;
-    }
-    .btn-start:hover { background: #dbb02e; }
-    .btn-start:active { transform: scale(.98); }
+/* Steps card */
+.steps-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:24px 26px;margin-bottom:20px;
+}
+.steps-card h3{font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--navy);text-transform:uppercase;margin-bottom:16px}
+.step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.step:last-child{border-bottom:none;padding-bottom:0}
+.step-dot{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy),var(--navy3));
+  color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
+}
+.step p{font-size:13.5px;color:#374151;line-height:1.5}
 
-    .tip-box {
-      background: #e8eef7;
-      border-left: 4px solid var(--navy);
-      border-radius: 0 6px 6px 0;
-      padding: 12px 14px;
-      font-size: 12.5px;
-      color: #333;
-      line-height: 1.5;
-      margin-bottom: 22px;
-    }
-    .tip-box strong { color: var(--navy); }
+/* Tip */
+.tip{
+  background:linear-gradient(to right,rgba(201,162,39,.12),transparent);
+  border-left:4px solid var(--gold);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:14px 16px;font-size:12.5px;color:#374151;line-height:1.6;margin-bottom:20px;
+}
+.tip strong{color:var(--navy)}
 
-    /* ── Assessment Screen ─────────────────────────────────────── */
-    .assess-header {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 14px 16px 0;
-    }
-    .progress-bar-wrap {
-      background: #ddd;
-      border-radius: 99px;
-      height: 8px;
-      margin: 8px 0 4px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(to right, var(--gold), #f5c842);
-      border-radius: 99px;
-      transition: width .3s ease;
-      width: 0%;
-    }
-    .progress-label {
-      font-size: 12px;
-      color: var(--dgray);
-      text-align: right;
-    }
-    .progress-label span { font-weight: 700; color: var(--navy); }
+/* Start button */
+.btn-start{
+  display:block;width:100%;padding:18px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);border:none;border-radius:var(--radius);
+  font-size:16px;font-weight:800;font-family:inherit;cursor:pointer;
+  letter-spacing:.3px;transition:transform .1s,box-shadow .15s;
+  box-shadow:0 4px 20px rgba(201,162,39,.4);
+}
+.btn-start:hover{box-shadow:0 6px 28px rgba(201,162,39,.55);transform:translateY(-1px)}
+.btn-start:active{transform:scale(.98)}
 
-    .questions-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 16px 16px 100px;
-    }
+/* ═══════════════════════════════════════════════════════════
+   SCREEN 2 — ASSESSMENT
+═══════════════════════════════════════════════════════════ */
+.assess-meta{max-width:900px;margin:0 auto;padding:16px 20px 0}
 
-    .q-card {
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 20px 22px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: box-shadow .2s;
-    }
-    .q-card.answered {
-      border-left: 4px solid var(--gold);
-    }
-    .q-card:not(.answered) {
-      border-left: 4px solid transparent;
-    }
-    .q-num {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--navy);
-      min-width: 28px;
-      text-align: right;
-    }
-    .q-text {
-      flex: 1;
-      font-size: 14px;
-      color: #222;
-      line-height: 1.45;
-    }
-    .rating-group {
-      display: flex;
-      gap: 5px;
-      flex-shrink: 0;
-    }
-    .rb {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      border: 1.5px solid #ccc;
-      background: var(--white);
-      font-size: 14px;
-      font-weight: 700;
-      color: #555;
-      cursor: pointer;
-      transition: background .12s, border-color .12s, color .12s, transform .08s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .rb:hover { border-color: var(--gold); color: var(--navy); }
-    .rb.selected {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: var(--white);
-    }
-    .rb:active { transform: scale(.9); }
+.prog-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.prog-info span{font-size:12px;font-weight:600;color:var(--dgray)}
+.prog-info strong{color:var(--navy)}
+.prog-track{background:#D1D5DB;border-radius:99px;height:10px;overflow:hidden}
+.prog-fill{
+  height:100%;border-radius:99px;width:0%;
+  background:linear-gradient(to right,var(--gold),var(--gold2));
+  transition:width .4s ease;box-shadow:0 0 8px rgba(201,162,39,.5);
+}
 
-    /* Sticky footer bar during assessment */
-    .assess-footer {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--navy);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      z-index: 99;
-      box-shadow: 0 -2px 12px rgba(0,0,0,.2);
-    }
-    .footer-count {
-      color: var(--white);
-      font-size: 13px;
-    }
-    .footer-count b { color: var(--gold); }
-    .btn-submit {
-      padding: 11px 28px;
-      background: var(--gold);
-      color: var(--navy);
-      border: none;
-      border-radius: 7px;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background .15s;
-    }
-    .btn-submit:hover { background: #dbb02e; }
-    .btn-submit:disabled {
-      background: #bbb;
-      color: #888;
-      cursor: not-allowed;
-    }
-    .btn-skip-link {
-      background: none;
-      border: none;
-      color: #aaa;
-      font-size: 12px;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    .btn-skip-link:hover { color: var(--white); }
+.qs-wrap{max-width:900px;margin:0 auto;padding:16px 20px 110px}
 
-    /* ── Results Screen ────────────────────────────────────────── */
-    .results-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 24px 16px 60px;
-    }
+/* Question group divider */
+.q-group-label{
+  font-size:10px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--dgray);
+  padding:18px 0 8px;display:flex;align-items:center;gap:10px;
+}
+.q-group-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
-    .results-hero {
-      background: linear-gradient(135deg, var(--navy) 60%, #2a5298);
-      color: var(--white);
-      border-radius: var(--radius);
-      padding: 30px 28px;
-      margin-bottom: 22px;
-      text-align: center;
-    }
-    .results-hero h2 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
-    .results-hero p { font-size: 14px; color: var(--gold); }
-    #results-name { font-size: 16px; color: #cce; margin-top: 6px; font-style: italic; }
+.q-card{
+  background:var(--card);border-radius:12px;
+  box-shadow:0 2px 12px rgba(14,43,92,.07);
+  padding:16px 18px;margin-bottom:8px;
+  display:flex;align-items:center;gap:14px;
+  border-left:4px solid transparent;
+  transition:border-color .2s,box-shadow .2s;
+}
+.q-card:hover{box-shadow:0 4px 18px rgba(14,43,92,.12)}
+.q-card.answered{border-left-color:var(--gold)}
 
-    .top3-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .top3-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px 14px;
-      text-align: center;
-      border-top: 5px solid var(--gold);
-    }
-    .top3-badge {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .top3-letter {
-      width: 44px; height: 44px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 50%;
-      font-size: 20px;
-      font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 10px;
-    }
-    .top3-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .top3-score {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .top3-score-label { font-size: 10px; color: var(--dgray); }
-    .top3-desc {
-      font-size: 12px;
-      color: #444;
-      line-height: 1.5;
-      margin-top: 10px;
-      text-align: left;
-    }
-    .top3-verse {
-      font-size: 10.5px;
-      color: var(--navy);
-      font-style: italic;
-      margin-top: 8px;
-    }
+.q-num{font-size:11px;font-weight:700;color:var(--dgray);min-width:26px;text-align:right}
+.q-text{flex:1;font-size:13.5px;color:var(--text);line-height:1.45}
 
-    /* All gifts list */
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--navy);
-      border-bottom: 2px solid var(--gold);
-      padding-bottom: 6px;
-      margin-bottom: 14px;
-    }
+.rating-group{display:flex;gap:5px;flex-shrink:0}
+.rb{
+  width:38px;height:38px;border-radius:10px;
+  border:2px solid var(--border);background:var(--lgray);
+  font-size:14px;font-weight:700;color:var(--dgray);
+  cursor:pointer;transition:all .12s;
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;
+}
+.rb:hover{border-color:var(--gold);color:var(--navy);background:var(--gold-lt)}
+.rb.selected{
+  background:linear-gradient(135deg,var(--navy),var(--navy3));
+  border-color:var(--navy);color:#fff;
+  box-shadow:0 3px 10px rgba(14,43,92,.3);
+  transform:scale(1.08);
+}
 
-    .gift-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .gift-row:last-child { border-bottom: none; }
-    .gift-letter-badge {
-      width: 30px; height: 30px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 50%;
-      font-size: 13px;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .gift-row.highlight .gift-letter-badge { background: var(--gold); color: var(--navy); }
-    .gift-name-col { min-width: 140px; font-size: 13.5px; font-weight: 600; color: #222; }
-    .gift-bar-wrap { flex: 1; }
-    .gift-bar-bg {
-      background: #e8e8e8;
-      border-radius: 99px;
-      height: 10px;
-      overflow: hidden;
-    }
-    .gift-bar-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: linear-gradient(to right, var(--gold), var(--navy));
-      transition: width .5s ease;
-    }
-    .gift-score-label { font-size: 13px; font-weight: 700; color: var(--navy); min-width: 28px; text-align: right; }
+/* Sticky footer */
+.assess-foot{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(14,43,92,.97);
+  backdrop-filter:blur(10px);
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;z-index:199;
+  box-shadow:0 -4px 20px rgba(0,0,0,.25);
+}
+.foot-count{color:#fff;font-size:13px;font-weight:500}
+.foot-count b{color:var(--gold2);font-size:16px}
+.foot-right{display:flex;gap:10px;align-items:center}
+.btn-skip{background:none;border:none;color:#94a3b8;font-size:12px;text-decoration:underline;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-skip:hover{color:#cbd5e1}
+.btn-see{
+  padding:11px 24px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);border:none;border-radius:8px;
+  font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;
+  transition:transform .1s,box-shadow .15s;
+  box-shadow:0 3px 12px rgba(201,162,39,.45);
+  white-space:nowrap;
+}
+.btn-see:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(201,162,39,.6)}
+.btn-see:disabled{background:#4b5563;color:#9ca3af;cursor:not-allowed;box-shadow:none;transform:none}
 
-    .all-gifts-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px 22px;
-      margin-bottom: 22px;
-    }
+/* ═══════════════════════════════════════════════════════════
+   SCREEN 3 — RESULTS
+═══════════════════════════════════════════════════════════ */
+/* Results hero */
+.results-hero{
+  background:linear-gradient(155deg,#071a3e 0%,var(--navy) 55%,#1a3f7a 100%);
+  padding:48px 24px 100px;text-align:center;position:relative;overflow:hidden;
+}
+.results-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+.results-hero::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:70px;
+  background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);
+}
+.results-hero .hero-icon{font-size:48px;margin-bottom:12px;display:block}
+.results-hero h2{font-size:clamp(22px,4vw,32px);font-weight:900;color:#fff;margin-bottom:6px}
+.results-hero p{font-size:13.5px;color:#a0b8d8;margin-bottom:8px}
+#results-name-display{
+  display:inline-block;
+  background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.4);
+  border-radius:99px;padding:5px 18px;
+  font-size:13px;font-weight:600;color:var(--gold2);margin-top:8px;
+}
 
-    .whats-next {
-      background: linear-gradient(135deg, var(--navy) 60%, #2a5298);
-      color: var(--white);
-      border-radius: var(--radius);
-      padding: 24px 26px;
-      margin-bottom: 22px;
-    }
-    .whats-next h3 { font-size: 14px; font-weight: 800; letter-spacing: 1px; color: var(--gold); margin-bottom: 8px; }
-    .whats-next p { font-size: 13.5px; line-height: 1.6; color: #dde; }
+.results-wrap{max-width:800px;margin:-40px auto 0;padding:0 16px 60px;position:relative;z-index:1}
 
-    .verse-block {
-      text-align: center;
-      font-style: italic;
-      font-size: 13px;
-      color: var(--navy);
-      padding: 16px;
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-bottom: 20px;
-    }
+/* ── Top 3 grid ── */
+.top3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.top3-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);overflow:hidden;
+  text-align:center;animation:riseIn .5s ease both;
+}
+.top3-card:nth-child(1){animation-delay:.1s}
+.top3-card:nth-child(2){animation-delay:.25s}
+.top3-card:nth-child(3){animation-delay:.4s}
+@keyframes riseIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-    .results-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .btn-action {
-      flex: 1;
-      min-width: 140px;
-      padding: 13px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      border: 2px solid var(--navy);
-      transition: background .15s, color .15s;
-    }
-    .btn-primary { background: var(--navy); color: var(--white); }
-    .btn-primary:hover { background: #2a5298; }
-    .btn-outline { background: var(--white); color: var(--navy); }
-    .btn-outline:hover { background: var(--lgray); }
-    .btn-gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-    .btn-gold:hover { background: #dbb02e; }
+.top3-ribbon{
+  padding:10px 14px;text-align:center;font-size:11px;font-weight:800;
+  letter-spacing:1.2px;text-transform:uppercase;
+}
+.top3-card:nth-child(1) .top3-ribbon{background:linear-gradient(135deg,#B8860B,var(--gold2));color:#fff}
+.top3-card:nth-child(2) .top3-ribbon{background:linear-gradient(135deg,#6B7280,#9CA3AF);color:#fff}
+.top3-card:nth-child(3) .top3-ribbon{background:linear-gradient(135deg,#92400E,#D97706);color:#fff}
 
-    /* ── Print styles ──────────────────────────────────────────── */
-    @media print {
-      .topbar, .assess-footer, .results-actions, .whats-next { display: none !important; }
-      .screen { display: none !important; }
-      #screen-results { display: block !important; }
-      body { background: white; }
-      .results-wrap { padding: 0; }
-      .top3-card { break-inside: avoid; }
-      .gift-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    }
+.top3-body{padding:18px 14px 22px;text-align:center}
+.top3-medal{font-size:32px;line-height:1;margin-bottom:8px}
+.top3-circle{
+  width:54px;height:54px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy),var(--navy3));
+  color:#fff;font-size:22px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 12px;box-shadow:0 4px 14px rgba(14,43,92,.3);
+}
+.top3-card:nth-child(1) .top3-circle{background:linear-gradient(135deg,#B8860B,var(--gold2));box-shadow:0 4px 14px rgba(201,162,39,.4)}
+.top3-name{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:6px;text-align:center}
+.top3-score-big{font-size:36px;font-weight:900;color:var(--gold);line-height:1;text-align:center}
+.top3-score-sub{font-size:11px;color:var(--dgray);margin-bottom:12px;text-align:center}
+.top3-mini-bar{height:6px;background:#E5E7EB;border-radius:99px;overflow:hidden;margin:0 0 14px}
+.top3-mini-fill{height:100%;border-radius:99px;background:linear-gradient(to right,var(--gold),var(--gold2))}
+.top3-desc{font-size:11.5px;color:#374151;line-height:1.55;text-align:left;margin-bottom:10px}
+.top3-verse{font-size:10px;color:var(--navy);font-style:italic;text-align:center}
 
-    /* ── Responsive ────────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      .hero-body { padding: 20px 18px; }
-      .q-card { flex-wrap: wrap; }
-      .rating-group { width: 100%; justify-content: space-between; }
-      .rb { flex: 1; height: 42px; }
-      .top3-grid { grid-template-columns: 1fr; }
-      .gift-name-col { min-width: 110px; }
-    }
+/* ── All scores ── */
+.section-block{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:24px 26px;margin-bottom:20px;
+}
+.sec-title{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:18px;
+}
+
+.gift-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.gift-row:last-child{border-bottom:none;padding-bottom:0}
+.g-badge{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy),var(--navy3));
+  color:#fff;font-size:13px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.gift-row.top-gift .g-badge{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy)}
+.g-name{min-width:130px;font-size:13px;font-weight:600;color:var(--text)}
+.g-bar{flex:1}
+.g-track{background:#E5E7EB;border-radius:99px;height:9px;overflow:hidden}
+.g-fill{height:100%;border-radius:99px;background:linear-gradient(to right,var(--gold),var(--navy3));width:0%;transition:width .8s ease}
+.g-score{font-size:13px;font-weight:700;color:var(--navy);min-width:24px;text-align:right}
+
+/* ── Gift reference guide ── */
+.guide-intro{font-size:13px;color:var(--dgray);margin-bottom:18px;line-height:1.6}
+.guide-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.guide-card{
+  background:var(--lgray);border-radius:12px;
+  border-left:4px solid var(--border);
+  padding:16px 16px 14px;
+  transition:border-color .2s,box-shadow .2s;
+  cursor:default;
+}
+.guide-card:hover{border-color:var(--gold);box-shadow:0 4px 16px rgba(201,162,39,.12)}
+.guide-card.is-top{border-color:var(--gold);background:linear-gradient(to bottom right,var(--gold-lt),#fff)}
+.guide-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.gc-circle{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy),var(--navy3));
+  color:#fff;font-size:15px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.guide-card.is-top .gc-circle{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy)}
+.gc-info{flex:1}
+.gc-name{font-size:13.5px;font-weight:700;color:var(--navy)}
+.gc-score-row{display:flex;align-items:center;gap:6px;margin-top:3px}
+.gc-score{font-size:12px;font-weight:700;color:var(--gold)}
+.gc-mini{flex:1;height:5px;background:#DDE0E8;border-radius:99px;overflow:hidden}
+.gc-mini-fill{height:100%;border-radius:99px;background:linear-gradient(to right,var(--gold),var(--navy3))}
+.gc-desc{font-size:12px;color:#374151;line-height:1.6;margin-bottom:8px}
+.gc-verse{font-size:10.5px;color:var(--navy3);font-style:italic}
+.gc-top-tag{
+  font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  background:var(--gold);color:var(--navy);border-radius:99px;padding:2px 8px;
+  margin-left:auto;flex-shrink:0;
+}
+
+/* ── What's next ── */
+.whats-next{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);
+  border-radius:var(--radius);padding:28px 28px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.whats-next::before{
+  content:'✦';position:absolute;right:24px;top:20px;
+  font-size:64px;color:rgba(201,162,39,.12);line-height:1;
+}
+.whats-next h3{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
+.whats-next p{font-size:13.5px;color:#CBD5E1;line-height:1.7}
+
+/* Verse block */
+.verse-block{
+  text-align:center;font-style:italic;font-size:13px;color:var(--navy);
+  padding:20px 24px;background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);margin-bottom:20px;line-height:1.7;
+  border-top:3px solid var(--gold);
+}
+
+/* Action buttons */
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-a{
+  flex:1;min-width:140px;padding:14px 18px;
+  border-radius:var(--radius-sm);font-size:14px;font-weight:700;
+  cursor:pointer;border:2px solid var(--navy);font-family:inherit;
+  transition:all .15s;
+}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border-color:var(--gold);box-shadow:0 4px 16px rgba(201,162,39,.35)}
+.btn-gold:hover{box-shadow:0 6px 22px rgba(201,162,39,.5);transform:translateY(-1px)}
+.btn-outline{background:var(--card);color:var(--navy)}
+.btn-outline:hover{background:var(--lgray)}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════════════════ */
+@media print{
+  .topbar,.gold-strip,.assess-foot,.actions,.whats-next{display:none!important}
+  .screen{display:none!important}
+  #screen-results{display:block!important}
+  body{background:#fff}
+  .results-hero::after,.results-hero::before{display:none}
+  .results-wrap{margin-top:0;padding:0}
+  .g-fill,.gc-mini-fill,.top3-mini-fill{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media(max-width:640px){
+  .top3-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .scale-lbl{font-size:8px}
+  .q-card{flex-wrap:wrap}
+  .rating-group{width:100%;justify-content:space-between}
+  .rb{flex:1;height:44px;border-radius:10px}
+  .assess-foot{flex-wrap:wrap;gap:8px}
+  .foot-right{width:100%;justify-content:flex-end}
+}
   </style>
 </head>
 <body>
 
-<!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║  SCREEN 1: WELCOME                           ║ -->
-<!-- ╚══════════════════════════════════════════════╝ -->
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 1 — WELCOME
+══════════════════════════════════════════════════════════ -->
 <div id="screen-welcome" class="screen active">
-  <div class="topbar">
-    <div>
-      <div class="topbar-brand">Faith Life Community Ministries</div>
-      <div class="topbar-sub">Spiritual Gifts Assessment</div>
+  <nav class="topbar">
+    <div class="topbar-logo">
+      <span class="topbar-cross">✦</span>
+      <div>
+        <div class="topbar-name">Faith Life Community Ministries</div>
+        <div class="topbar-tag">Spiritual Gifts Assessment</div>
+      </div>
     </div>
+    <div class="topbar-pill">72 Questions</div>
+  </nav>
+  <div class="gold-strip"></div>
+
+  <div class="welcome-hero">
+    <span class="hero-icon">🎁</span>
+    <h1>Discover Your<br/><span>Spiritual Gifts</span></h1>
+    <p>God wired you on purpose for a purpose. This assessment helps you discover the unique gifts He placed inside you — and how to use them at Faith Life.</p>
   </div>
-  <div class="topbar-gold-line"></div>
 
-  <div class="welcome-wrap">
-    <div class="hero-card">
-      <div class="hero-banner">
-        <h1>Spiritual Gifts Assessment</h1>
-        <p>Discovering How God Has Wired You for Ministry</p>
-      </div>
-      <div class="hero-body">
+  <div class="welcome-body">
 
-        <div class="scale-box">
-          <h3>Rating Scale</h3>
-          <div class="scale-items">
-            <div class="scale-item"><div class="scale-num">1</div><div class="scale-label">Almost Never</div></div>
-            <div class="scale-item"><div class="scale-num">2</div><div class="scale-label">Seldom</div></div>
-            <div class="scale-item"><div class="scale-num">3</div><div class="scale-label">Sometimes</div></div>
-            <div class="scale-item"><div class="scale-num">4</div><div class="scale-label">Frequently</div></div>
-            <div class="scale-item"><div class="scale-num">5</div><div class="scale-label">Almost Always</div></div>
-          </div>
-        </div>
+    <div class="name-card">
+      <label for="student-name">Your Name</label>
+      <input type="text" id="student-name" placeholder="Enter your name (optional)" autocomplete="name"/>
+    </div>
 
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text">Read each statement and rate it honestly — based on how you really are, not how you think you should be.</div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text">Click the number that best describes you (1 = Almost Never, 5 = Almost Always).</div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text">Answer all 72 questions, then click <strong>See My Results</strong>.</div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-text">Talk to a ministry leader at Faith Life about connecting in a role that fits how God made you!</div></div>
-        </div>
-
-        <div class="tip-box"><strong>No right or wrong answers.</strong> Answer each statement based on your actual experience and preferences. God made you uniquely, and this assessment helps you discover how.</div>
-
-        <div class="name-row">
-          <label for="student-name">Your Name:</label>
-          <input type="text" id="student-name" placeholder="Optional" autocomplete="name" />
-        </div>
-
-        <button class="btn-start" onclick="startAssessment()">Begin Assessment &rarr;</button>
+    <div class="scale-card">
+      <h3>Rating Scale</h3>
+      <div class="scale-row">
+        <div class="scale-item"><div class="scale-num">1</div><div class="scale-lbl">Almost Never</div></div>
+        <div class="scale-item"><div class="scale-num">2</div><div class="scale-lbl">Seldom</div></div>
+        <div class="scale-item"><div class="scale-num">3</div><div class="scale-lbl">Sometimes</div></div>
+        <div class="scale-item"><div class="scale-num">4</div><div class="scale-lbl">Frequently</div></div>
+        <div class="scale-item"><div class="scale-num">5</div><div class="scale-lbl">Almost Always</div></div>
       </div>
     </div>
+
+    <div class="steps-card">
+      <h3>How It Works</h3>
+      <div class="step"><div class="step-dot">1</div><p>Read each statement. Be honest — answer based on how you <em>actually</em> are, not how you think you should be.</p></div>
+      <div class="step"><div class="step-dot">2</div><p>Click a number from <strong>1 to 5</strong> next to each statement using the rating scale above.</p></div>
+      <div class="step"><div class="step-dot">3</div><p>Complete all 72 statements, then tap <strong>See My Results</strong>.</p></div>
+      <div class="step"><div class="step-dot">4</div><p>Review your top gifts and talk to a leader at Faith Life about connecting to ministry!</p></div>
+    </div>
+
+    <div class="tip"><strong>No right or wrong answers.</strong> God made you uniquely. Answer every statement from your real-life experience — not from what you think a "church person" should say.</div>
+
+    <button class="btn-start" onclick="startAssessment()">Begin Assessment &rarr;</button>
   </div>
 </div>
 
 
-<!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║  SCREEN 2: ASSESSMENT                        ║ -->
-<!-- ╚══════════════════════════════════════════════╝ -->
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 2 — ASSESSMENT
+══════════════════════════════════════════════════════════ -->
 <div id="screen-questions" class="screen">
-  <div class="topbar">
-    <div>
-      <div class="topbar-brand">Faith Life Community Ministries</div>
-      <div class="topbar-sub">Spiritual Gifts Assessment</div>
+  <nav class="topbar">
+    <div class="topbar-logo">
+      <span class="topbar-cross">✦</span>
+      <div>
+        <div class="topbar-name">Faith Life Community Ministries</div>
+        <div class="topbar-tag">Spiritual Gifts Assessment</div>
+      </div>
     </div>
-    <div class="topbar-progress">
-      <span id="nav-count">0 / 72 answered</span>
+    <div class="topbar-pill" id="nav-count">0 / 72</div>
+  </nav>
+  <div class="gold-strip"></div>
+
+  <div class="assess-meta">
+    <div class="prog-info">
+      <span>Progress — <strong id="prog-label">0 of 72</strong> answered</span>
+      <span id="prog-pct">0%</span>
     </div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
   </div>
-  <div class="topbar-gold-line"></div>
 
-  <div class="assess-header">
-    <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar"></div></div>
-    <div class="progress-label"><span id="progress-label">0</span> of 72 answered</div>
-  </div>
+  <div class="qs-wrap" id="qs-list"></div>
 
-  <div class="questions-wrap" id="questions-list"></div>
-
-  <div class="assess-footer">
-    <div class="footer-count">
-      <b id="footer-answered">0</b> / 72 answered
-    </div>
-    <div style="display:flex;gap:10px;align-items:center;">
-      <button class="btn-skip-link" onclick="submitAnyway()">Skip unanswered &amp; see results</button>
-      <button class="btn-submit" id="btn-submit" onclick="showResults()" disabled>See My Results &rarr;</button>
+  <div class="assess-foot">
+    <div class="foot-count"><b id="foot-n">0</b> / 72 answered</div>
+    <div class="foot-right">
+      <button class="btn-skip" onclick="submitAnyway()">Skip unanswered &amp; see results</button>
+      <button class="btn-see" id="btn-see" onclick="showResults()" disabled>See My Results &rarr;</button>
     </div>
   </div>
 </div>
 
 
-<!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║  SCREEN 3: RESULTS                           ║ -->
-<!-- ╚══════════════════════════════════════════════╝ -->
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 3 — RESULTS
+══════════════════════════════════════════════════════════ -->
 <div id="screen-results" class="screen">
-  <div class="topbar">
-    <div>
-      <div class="topbar-brand">Faith Life Community Ministries</div>
-      <div class="topbar-sub">Spiritual Gifts Assessment — Results</div>
+  <nav class="topbar">
+    <div class="topbar-logo">
+      <span class="topbar-cross">✦</span>
+      <div>
+        <div class="topbar-name">Faith Life Community Ministries</div>
+        <div class="topbar-tag">Your Spiritual Gifts Results</div>
+      </div>
     </div>
+  </nav>
+  <div class="gold-strip"></div>
+
+  <div class="results-hero">
+    <span class="hero-icon">✨</span>
+    <h2>Your Spiritual Gifts</h2>
+    <p>Here is how God has uniquely wired you for ministry.</p>
+    <div id="results-name-display" style="display:none"></div>
   </div>
-  <div class="topbar-gold-line"></div>
 
   <div class="results-wrap">
-    <div class="results-hero">
-      <h2>Your Spiritual Gifts</h2>
-      <p>Here is how God has uniquely wired you for ministry.</p>
-      <div id="results-name"></div>
+
+    <!-- Top 3 -->
+    <div id="top3-section" class="top3-grid"></div>
+
+    <!-- All scores ranked -->
+    <div class="section-block">
+      <div class="sec-title">All Gift Scores — Ranked</div>
+      <div id="all-scores"></div>
     </div>
 
-    <div id="top3-section"></div>
-
-    <div class="all-gifts-card">
-      <div class="section-title">All Gift Scores (Ranked)</div>
-      <div id="all-gifts-list"></div>
+    <!-- Gift reference guide -->
+    <div class="section-block">
+      <div class="sec-title">Gift Reference Guide — All 23 Gifts</div>
+      <p class="guide-intro">Every spiritual gift below is real and active in the Church today. Your top gifts are highlighted in gold. Read about each one to better understand how God may be calling you to serve.</p>
+      <div class="guide-grid" id="guide-grid"></div>
     </div>
 
+    <!-- What's next -->
     <div class="whats-next">
-      <h3>WHAT'S NEXT?</h3>
-      <p>Your gifts are not just for you — they are for the church. Talk to a ministry leader at Faith Life about which ministry area fits how God has made you. Your next step is to get connected and get serving.</p>
+      <h3>What's Next?</h3>
+      <p>Your gifts are not just for you — they are for the Church. Talk to a ministry leader at Faith Life about which team or ministry fits how God has made you. Your next step is to get connected and get serving.</p>
     </div>
 
     <div class="verse-block">
-      "God has given each of you a gift from his great variety of spiritual gifts.<br>
-      Use them well to serve one another." — <strong>1 Peter 4:10 (NLT)</strong>
+      "God has given each of you a gift from his great variety of spiritual gifts.<br/>
+      Use them well to serve one another."<br/>
+      <strong style="color:var(--navy)">— 1 Peter 4:10 (NLT)</strong>
     </div>
 
-    <div class="results-actions">
-      <button class="btn-action btn-gold" onclick="window.print()">🖨 Print Results</button>
-      <button class="btn-action btn-outline" onclick="startOver()">↺ Start Over</button>
+    <div class="actions">
+      <button class="btn-a btn-gold" onclick="window.print()">🖨&nbsp; Print Results</button>
+      <button class="btn-a btn-outline" onclick="startOver()">↺ &nbsp;Start Over</button>
     </div>
   </div>
 </div>
 
 
-<!-- ╔══════════════════════════════════════════════╗ -->
-<!-- ║  DATA + LOGIC                                ║ -->
-<!-- ╚══════════════════════════════════════════════╝ -->
+<!-- ══════════════════════════════════════════════════════════
+     DATA + LOGIC
+══════════════════════════════════════════════════════════ -->
 <script>
-/* ── Question data ─────────────────────────────────────────────────────────── */
+/* ── Questions ────────────────────────────────────────────────────────────── */
 const QUESTIONS = [
-  [1,  "I like organizing services and events."],
-  [2,  "I enjoy starting new churches."],
-  [3,  "Working with my hands is fun for me."],
-  [4,  "I can tell when someone is insincere."],
-  [5,  "I pray for the lost daily."],
-  [6,  "Encouraging others is a high priority in my life."],
-  [7,  "Believing God for our daily needs is important to me."],
-  [8,  "Giving money to advance God's Kingdom is very important to me."],
-  [9,  "I look for opportunities to pray for the sick."],
-  [10, "I enjoy doing small things that others pass over."],
-  [11, "Having people over to my house is something I do often."],
-  [12, "Spending hours in prayer for others is very enjoyable to me."],
-  [13, "Education is very important to me."],
-  [14, "I tend to motivate others to get involved."],
-  [15, "My heart hurts when I see others hurting."],
-  [16, "I believe God will use me to enact His miracles."],
-  [17, "I enjoy sharing the gospel across cultures and nationalities."],
-  [18, "I have devoted time to mastering my voice and/or instrument."],
-  [19, "Caring for hurting people is very important to me."],
-  [20, "The willful sin of others greatly concerns me."],
-  [21, "I enjoy serving behind the scenes."],
-  [22, "I like creating outlines and in-depth studies of the Bible."],
-  [23, "God has used me to pray in a heavenly language."],
-  [24, "I enjoy Proverbs more than any other book in the Bible."],
-  [25, "I am passionate about managing details."],
-  [26, "I prefer to pioneer new ministry projects."],
-  [27, "I consider myself a craftsman or craftswoman."],
-  [28, "I sense when situations are spiritually unhealthy."],
-  [29, "I am greatly concerned about seeing the lost saved."],
-  [30, "I try to come across as loving and caring."],
-  [31, "Asking God for a list of big things is exciting to me."],
-  [32, "I find ways to give offerings above my tithe."],
-  [33, "I believe miraculous healing is for today."],
-  [34, "Helping others is one of my greatest achievements."],
-  [35, "Creating a warm and welcoming home is important to me."],
-  [36, "I am burdened to pray for situations in the world."],
-  [37, "People seek me out to learn more about God's Kingdom."],
-  [38, "I prefer to take the lead whenever necessary."],
-  [39, "I am very sensitive to sad stories."],
-  [40, "Miracles often happen when I am nearby."],
-  [41, "Living in another country to share the gospel excites me."],
-  [42, "I desire to serve the church through worship."],
-  [43, "I enjoy connecting, caring for, and coaching others."],
-  [44, "Confronting someone about sin in their life is not hard for me."],
-  [45, "It bothers me when people sit around and do nothing."],
-  [46, "I share Biblical truth in hopes of others' personal growth."],
-  [47, "I pray in tongues daily."],
-  [48, "When I study Scripture, God gives me unique insights."],
-  [49, "Creating a task list is easy and enjoyable for me."],
-  [50, "I am drawn to ministries that start new churches."],
-  [51, "Building something with my hands is very rewarding to me."],
-  [52, "I can pinpoint issues or problems before others."],
-  [53, "I enjoy sharing the gospel with total strangers."],
-  [54, "I look for ways to encourage other people."],
-  [55, "I trust that God has my back in every situation."],
-  [56, "Making more money means I can give more."],
-  [57, "God has used me to bring healing to the sick."],
-  [58, "Being part of the process is fulfilling to me."],
-  [59, "I tend to make total strangers feel at home."],
-  [60, "People often describe me as a prayer warrior."],
-  [61, "I enjoy knowing biblical details and helping others understand."],
-  [62, "I delegate responsibilities to accomplish tasks."],
-  [63, "I am motivated to help those who are less fortunate."],
-  [64, "I have a constant hunger to see God's miraculous power."],
-  [65, "I focus a lot on reaching the world for Christ."],
-  [66, "I gain deep satisfaction from leading others in worship."],
-  [67, "I enjoy walking with someone through difficult times."],
-  [68, "I enjoy hearing passionate and clear preaching of the truth."],
-  [69, "I like to do small things that others pass over."],
-  [70, "I prefer to teach the Bible topically over verse-by-verse."],
-  [71, "Praying in the Spirit is encouraging and important to me."],
-  [72, "When facing difficulty, I tend to make wise decisions."],
+  [1,"I like organizing services and events."],
+  [2,"I enjoy starting new churches."],
+  [3,"Working with my hands is fun for me."],
+  [4,"I can tell when someone is insincere."],
+  [5,"I pray for the lost daily."],
+  [6,"Encouraging others is a high priority in my life."],
+  [7,"Believing God for our daily needs is important to me."],
+  [8,"Giving money to advance God's Kingdom is very important to me."],
+  [9,"I look for opportunities to pray for the sick."],
+  [10,"I enjoy doing small things that others pass over."],
+  [11,"Having people over to my house is something I do often."],
+  [12,"Spending hours in prayer for others is very enjoyable to me."],
+  [13,"Education is very important to me."],
+  [14,"I tend to motivate others to get involved."],
+  [15,"My heart hurts when I see others hurting."],
+  [16,"I believe God will use me to enact His miracles."],
+  [17,"I enjoy sharing the gospel across cultures and nationalities."],
+  [18,"I have devoted time to mastering my voice and/or instrument."],
+  [19,"Caring for hurting people is very important to me."],
+  [20,"The willful sin of others greatly concerns me."],
+  [21,"I enjoy serving behind the scenes."],
+  [22,"I like creating outlines and in-depth studies of the Bible."],
+  [23,"God has used me to pray in a heavenly language."],
+  [24,"I enjoy Proverbs more than any other book in the Bible."],
+  [25,"I am passionate about managing details."],
+  [26,"I prefer to pioneer new ministry projects."],
+  [27,"I consider myself a craftsman or craftswoman."],
+  [28,"I sense when situations are spiritually unhealthy."],
+  [29,"I am greatly concerned about seeing the lost saved."],
+  [30,"I try to come across as loving and caring."],
+  [31,"Asking God for a list of big things is exciting to me."],
+  [32,"I find ways to give offerings above my tithe."],
+  [33,"I believe miraculous healing is for today."],
+  [34,"Helping others is one of my greatest achievements."],
+  [35,"Creating a warm and welcoming home is important to me."],
+  [36,"I am burdened to pray for situations in the world."],
+  [37,"People seek me out to learn more about God's Kingdom."],
+  [38,"I prefer to take the lead whenever necessary."],
+  [39,"I am very sensitive to sad stories."],
+  [40,"Miracles often happen when I am nearby."],
+  [41,"Living in another country to share the gospel excites me."],
+  [42,"I desire to serve the church through worship."],
+  [43,"I enjoy connecting, caring for, and coaching others."],
+  [44,"Confronting someone about sin in their life is not hard for me."],
+  [45,"It bothers me when people sit around and do nothing."],
+  [46,"I share Biblical truth in hopes of others' personal growth."],
+  [47,"I pray in tongues daily."],
+  [48,"When I study Scripture, God gives me unique insights."],
+  [49,"Creating a task list is easy and enjoyable for me."],
+  [50,"I am drawn to ministries that start new churches."],
+  [51,"Building something with my hands is very rewarding to me."],
+  [52,"I can pinpoint issues or problems before others."],
+  [53,"I enjoy sharing the gospel with total strangers."],
+  [54,"I look for ways to encourage other people."],
+  [55,"I trust that God has my back in every situation."],
+  [56,"Making more money means I can give more."],
+  [57,"God has used me to bring healing to the sick."],
+  [58,"Being part of the process is fulfilling to me."],
+  [59,"I tend to make total strangers feel at home."],
+  [60,"People often describe me as a prayer warrior."],
+  [61,"I enjoy knowing biblical details and helping others understand."],
+  [62,"I delegate responsibilities to accomplish tasks."],
+  [63,"I am motivated to help those who are less fortunate."],
+  [64,"I have a constant hunger to see God's miraculous power."],
+  [65,"I focus a lot on reaching the world for Christ."],
+  [66,"I gain deep satisfaction from leading others in worship."],
+  [67,"I enjoy walking with someone through difficult times."],
+  [68,"I enjoy hearing passionate and clear preaching of the truth."],
+  [69,"I like to do small things that others pass over."],
+  [70,"I prefer to teach the Bible topically over verse-by-verse."],
+  [71,"Praying in the Spirit is encouraging and important to me."],
+  [72,"When facing difficulty, I tend to make wise decisions."],
 ];
 
-/* ── Gift data (A–X, no W/Tongues) ─────────────────────────────────────────── */
+/* ── Gifts A–X (no W) ─────────────────────────────────────────────────────── */
 const GIFTS = [
-  {
-    letter: "A", name: "Administration", questions: [1, 25, 49],
-    desc: "The divine ability to organize multiple tasks and groups of people to accomplish ministry goals.",
-    verse: "Luke 14:28-30; Acts 6:1-7"
-  },
-  {
-    letter: "B", name: "Apostleship", questions: [2, 26, 50],
-    desc: "The divine ability to pioneer new churches and ministries through planting, overseeing, and training.",
-    verse: "Acts 15:22-35; Ephesians 4:11-14"
-  },
-  {
-    letter: "C", name: "Craftsmanship", questions: [3, 27, 51],
-    desc: "The divine ability to plan, build, and work with your hands to accomplish multiple ministry applications.",
-    verse: "Exodus 31:3-11; Acts 18:2-3"
-  },
-  {
-    letter: "D", name: "Discernment", questions: [4, 28, 52],
-    desc: "The divine ability to spiritually identify falsehood and distinguish between right and wrong motives.",
-    verse: "Acts 5:1-11; 1 Corinthians 12:10; 1 John 4:1-6"
-  },
-  {
-    letter: "E", name: "Evangelism", questions: [5, 29, 53],
-    desc: "The divine ability to help non-Christians take the necessary steps to becoming born-again.",
-    verse: "Acts 8:26-40; Ephesians 4:11-14"
-  },
-  {
-    letter: "F", name: "Exhortation", questions: [6, 30, 54],
-    desc: "The divine ability to encourage others through the written or spoken word and Biblical truth.",
-    verse: "Romans 12:8; Hebrews 10:24-25"
-  },
-  {
-    letter: "G", name: "Faith", questions: [7, 31, 55],
-    desc: "The divine ability to believe God for unseen supernatural results in every arena of life.",
-    verse: "Romans 4:18-21; 1 Corinthians 12:9; Hebrews 11"
-  },
-  {
-    letter: "H", name: "Giving", questions: [8, 32, 56],
-    desc: "The divine ability to produce wealth and give generously to advance the Kingdom of God on earth.",
-    verse: "Mark 12:41-44; Romans 12:8; 2 Corinthians 8:1-7"
-  },
-  {
-    letter: "I", name: "Healing", questions: [9, 33, 57],
-    desc: "The divine ability to act as an intermediary in faith and prayer for the healing of physical and mental illness.",
-    verse: "Acts 3:1-10; 1 Corinthians 12:9"
-  },
-  {
-    letter: "J", name: "Helps", questions: [10, 34, 58],
-    desc: "The divine ability to work in a supportive role for the accomplishment of tasks in Christian ministry.",
-    verse: "Mark 15:40-41; Romans 16:1-2; 1 Corinthians 12:28"
-  },
-  {
-    letter: "K", name: "Hospitality", questions: [11, 35, 59],
-    desc: "The divine ability to create warm, welcoming environments for others in your home, church, or office.",
-    verse: "Romans 12:13; Hebrews 13:1-2; 1 Peter 4:9"
-  },
-  {
-    letter: "L", name: "Intercession", questions: [12, 36, 60],
-    desc: "The divine ability to stand in the gap in prayer for someone, something, or someplace, believing for profound results.",
-    verse: "Colossians 4:12-13; James 5:14-16"
-  },
-  {
-    letter: "M", name: "Knowledge", questions: [13, 37, 61],
-    desc: "The divine ability to understand and bring clarity to situations and circumstances, often through a word from God.",
-    verse: "Acts 5:1-11; 1 Corinthians 12:8; Colossians 2:2-3"
-  },
-  {
-    letter: "N", name: "Leadership", questions: [14, 38, 62],
-    desc: "The divine ability to influence people and direct them toward the big picture, vision, or idea God has given.",
-    verse: "Romans 12:8; 1 Timothy 3:1-13; Hebrews 13:17"
-  },
-  {
-    letter: "O", name: "Mercy", questions: [15, 39, 63],
-    desc: "The divine ability to feel empathy and to care deeply for those who are hurting in any way.",
-    verse: "Matthew 9:35-36; Romans 12:8; 1 Thessalonians 5:14"
-  },
-  {
-    letter: "P", name: "Miracles", questions: [16, 40, 64],
-    desc: "The divine ability to alter the natural outcomes of life in a supernatural way through prayer, faith, and divine direction.",
-    verse: "Acts 9:36-42; Romans 15:18-19; 1 Corinthians 12:10"
-  },
-  {
-    letter: "Q", name: "Missionary", questions: [17, 41, 65],
-    desc: "The divine ability to reach others outside of your culture and nationality, often by living among them.",
-    verse: "Acts 8:4, 13:2-3; Romans 10:15"
-  },
-  {
-    letter: "R", name: "Music / Worship", questions: [18, 42, 66],
-    desc: "The divine ability to sing, dance, or play an instrument primarily to help others encounter and worship God.",
-    verse: "1 Chronicles 16:41-42; 2 Chronicles 5:12-13; Psalm 150"
-  },
-  {
-    letter: "S", name: "Pastor / Shepherd", questions: [19, 43, 67],
-    desc: "The divine ability to care for the personal needs of others by nurturing and helping them work through life issues.",
-    verse: "John 10:1-18; Ephesians 4:11-14; 1 Peter 5:1-3"
-  },
-  {
-    letter: "T", name: "Prophecy", questions: [20, 44, 68],
-    desc: "The divine ability to boldly speak and bring clarity to Scriptural and doctrinal truth.",
-    verse: "1 Corinthians 14:1-4; 1 Thessalonians 1:5"
-  },
-  {
-    letter: "U", name: "Service", questions: [21, 45, 69],
-    desc: "The divine ability to do small or great tasks in working for the overall good of the body of Christ.",
-    verse: "Acts 6:1-7; Romans 12:7; Galatians 6:10"
-  },
-  {
-    letter: "V", name: "Teaching", questions: [22, 46, 70],
-    desc: "The divine ability to study Scripture and help others understand it at a deeper level.",
-    verse: "Acts 18:24-28; 1 Corinthians 12:28; Ephesians 4:11-14"
-  },
-  {
-    letter: "X", name: "Wisdom", questions: [24, 48, 72],
-    desc: "The divine ability to apply the truths of Scripture in practical ways, producing the character of Jesus Christ.",
-    verse: "Acts 6:3,10; 1 Corinthians 2:6-13, 12:8"
-  },
+  {letter:"A",name:"Administration",questions:[1,25,49],
+   desc:"The divine ability to organize multiple tasks and groups of people to accomplish ministry goals efficiently and effectively.",
+   verse:"Luke 14:28-30; Acts 6:1-7"},
+  {letter:"B",name:"Apostleship",questions:[2,26,50],
+   desc:"The divine ability to pioneer new churches and ministries through planting, overseeing, and training — often in new or unreached contexts.",
+   verse:"Acts 15:22-35; Ephesians 4:11-14"},
+  {letter:"C",name:"Craftsmanship",questions:[3,27,51],
+   desc:"The divine ability to plan, build, and work skillfully with your hands in construction or creative environments to advance ministry.",
+   verse:"Exodus 31:3-11; Acts 18:2-3"},
+  {letter:"D",name:"Discernment",questions:[4,28,52],
+   desc:"The divine ability to spiritually identify falsehood and distinguish between right and wrong motives, truth and deception, in people and situations.",
+   verse:"Acts 5:1-11; 1 Corinthians 12:10; 1 John 4:1-6"},
+  {letter:"E",name:"Evangelism",questions:[5,29,53],
+   desc:"The divine ability to help non-believers take the necessary steps to a saving faith in Jesus Christ through clear and compassionate sharing of the Gospel.",
+   verse:"Acts 8:26-40; Ephesians 4:11-14"},
+  {letter:"F",name:"Exhortation",questions:[6,30,54],
+   desc:"The divine ability to encourage, comfort, and strengthen others through spoken or written words grounded in Biblical truth.",
+   verse:"Romans 12:8; 1 Timothy 4:13; Hebrews 10:24-25"},
+  {letter:"G",name:"Faith",questions:[7,31,55],
+   desc:"The divine ability to believe God for unseen supernatural results in every area of life — trusting Him fully when others hesitate.",
+   verse:"Romans 4:18-21; 1 Corinthians 12:9; Hebrews 11"},
+  {letter:"H",name:"Giving",questions:[8,32,56],
+   desc:"The divine ability to generate wealth and give generously — by tithes, offerings, and sacrifice — for the purpose of advancing God's Kingdom on earth.",
+   verse:"Mark 12:41-44; Romans 12:8; 2 Corinthians 8:1-7"},
+  {letter:"I",name:"Healing",questions:[9,33,57],
+   desc:"The divine ability to act as an intermediary through faith and prayer for the healing of physical and mental illness — by the laying on of hands and intercession.",
+   verse:"Acts 3:1-10; 1 Corinthians 12:9, 28"},
+  {letter:"J",name:"Helps",questions:[10,34,58],
+   desc:"The divine ability to work in a supportive, behind-the-scenes role that enables others to use their gifts and advance the ministry effectively.",
+   verse:"Mark 15:40-41; Romans 16:1-2; 1 Corinthians 12:28"},
+  {letter:"K",name:"Hospitality",questions:[11,35,59],
+   desc:"The divine ability to create warm, welcoming, and safe environments for others — in your home, your church, or any space you inhabit.",
+   verse:"Romans 12:13; Hebrews 13:1-2; 1 Peter 4:9"},
+  {letter:"L",name:"Intercession",questions:[12,36,60],
+   desc:"The divine ability to stand in the gap in sustained, fervent prayer for people, situations, or places — believing God for profound and lasting results.",
+   verse:"Hebrews 7:25; Colossians 4:12-13; James 5:14-16"},
+  {letter:"M",name:"Knowledge",questions:[13,37,61],
+   desc:"The divine ability to understand and bring clarity to situations and circumstances, often accompanied by a specific word or insight from God.",
+   verse:"Acts 5:1-11; 1 Corinthians 12:8; Colossians 2:2-3"},
+  {letter:"N",name:"Leadership",questions:[14,38,62],
+   desc:"The divine ability to influence people and direct them — at their level — toward the vision or goal God has placed before the community.",
+   verse:"Romans 12:8; 1 Timothy 3:1-13; Hebrews 13:17"},
+  {letter:"O",name:"Mercy",questions:[15,39,63],
+   desc:"The divine ability to feel deep empathy and to actively care for those who are hurting, grieving, marginalized, or in any form of need.",
+   verse:"Matthew 9:35-36; Romans 12:8; 1 Thessalonians 5:14"},
+  {letter:"P",name:"Miracles",questions:[16,40,64],
+   desc:"The divine ability to alter natural outcomes through faith, prayer, and God's direction — witnessing and participating in the supernatural work of God.",
+   verse:"Acts 9:36-42; Romans 15:18-19; 1 Corinthians 12:10"},
+  {letter:"Q",name:"Missionary",questions:[17,41,65],
+   desc:"The divine ability to reach people outside your culture and nationality for Christ — often by dwelling among them and serving within their community.",
+   verse:"Acts 8:4, 13:2-3; Romans 10:15"},
+  {letter:"R",name:"Music / Worship",questions:[18,42,66],
+   desc:"The divine ability to sing, play an instrument, or lead through music in a way that draws others into genuine encounter and worship of God.",
+   verse:"1 Chronicles 16:41-42; Psalm 150; Ephesians 5:19"},
+  {letter:"S",name:"Pastor / Shepherd",questions:[19,43,67],
+   desc:"The divine ability to nurture, care for, and walk alongside others through the personal details of their spiritual journey and life struggles.",
+   verse:"John 10:1-18; Ephesians 4:11-14; 1 Peter 5:1-3"},
+  {letter:"T",name:"Prophecy",questions:[20,44,68],
+   desc:"The divine ability to boldly and clearly proclaim Scriptural truth — calling people to repentance, conviction, and faithfulness to God's Word.",
+   verse:"1 Corinthians 14:1-4; 1 Thessalonians 1:5"},
+  {letter:"U",name:"Service",questions:[21,45,69],
+   desc:"The divine ability to meet practical needs — great or small — in ways that free others to use their gifts and build up the whole body of Christ.",
+   verse:"Acts 6:1-7; Romans 12:7; Galatians 6:10; Titus 3:14"},
+  {letter:"V",name:"Teaching",questions:[22,46,70],
+   desc:"The divine ability to study, understand, and communicate Scripture in ways that produce clarity, depth of understanding, and growth in other believers.",
+   verse:"Acts 18:24-28; 1 Corinthians 12:28; Ephesians 4:11-14"},
+  {letter:"X",name:"Wisdom",questions:[24,48,72],
+   desc:"The divine ability to apply the truths of Scripture in practical, life-giving ways — producing the character and outcomes of Jesus Christ in real situations.",
+   verse:"Acts 6:3, 10; 1 Corinthians 2:6-13, 12:8"},
 ];
 
-/* ── State ──────────────────────────────────────────────────────────────────── */
-const answers = {};   // { qNum: value }
+/* ── State ───────────────────────────────────────────────────────────────── */
+const answers = {};
 
-/* ── Screen switching ────────────────────────────────────────────────────────── */
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+/* ── Screen switch ────────────────────────────────────────────────────────── */
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ── Welcome → Assessment ────────────────────────────────────────────────────── */
-function startAssessment() {
-  renderQuestions();
-  showScreen('screen-questions');
+/* ── Start ────────────────────────────────────────────────────────────────── */
+function startAssessment(){
+  buildQuestions();
+  show('screen-questions');
 }
 
-/* ── Render all 72 questions ─────────────────────────────────────────────────── */
-function renderQuestions() {
-  const list = document.getElementById('questions-list');
-  list.innerHTML = '';
-  QUESTIONS.forEach(([num, text]) => {
-    const card = document.createElement('div');
-    card.className = 'q-card';
-    card.id = `q-card-${num}`;
-    card.innerHTML = `
-      <div class="q-num">${num}.</div>
-      <div class="q-text">${text}</div>
-      <div class="rating-group" id="rg-${num}">
-        ${[1,2,3,4,5].map(v => `
-          <button class="rb" data-q="${num}" data-v="${v}" onclick="rate(${num},${v})" title="${ratingLabel(v)}">
-            ${v}
-          </button>
-        `).join('')}
+/* ── Build question list ─────────────────────────────────────────────────── */
+function buildQuestions(){
+  const list=document.getElementById('qs-list');
+  list.innerHTML='';
+  const groups=[
+    {label:"Questions 1 – 12",range:[1,12]},
+    {label:"Questions 13 – 24",range:[13,24]},
+    {label:"Questions 25 – 36",range:[25,36]},
+    {label:"Questions 37 – 48",range:[37,48]},
+    {label:"Questions 49 – 60",range:[49,60]},
+    {label:"Questions 61 – 72",range:[61,72]},
+  ];
+  groups.forEach(g=>{
+    const lbl=document.createElement('div');
+    lbl.className='q-group-label';
+    lbl.textContent=g.label;
+    list.appendChild(lbl);
+    QUESTIONS.filter(([n])=>n>=g.range[0]&&n<=g.range[1]).forEach(([num,text])=>{
+      const card=document.createElement('div');
+      card.className='q-card';
+      card.id=`qc-${num}`;
+      card.innerHTML=`
+        <div class="q-num">${num}</div>
+        <div class="q-text">${text}</div>
+        <div class="rating-group">
+          ${[1,2,3,4,5].map(v=>`<button class="rb" data-q="${num}" data-v="${v}" onclick="rate(${num},${v})" title="${rlabel(v)}">${v}</button>`).join('')}
+        </div>`;
+      list.appendChild(card);
+    });
+  });
+  updateProg();
+}
+
+const rlabel=v=>["","Almost Never","Seldom","Sometimes","Frequently","Almost Always"][v];
+
+/* ── Rate ─────────────────────────────────────────────────────────────────── */
+function rate(q,v){
+  answers[q]=v;
+  document.querySelectorAll(`[data-q="${q}"]`).forEach(b=>b.classList.toggle('selected',+b.dataset.v===v));
+  const card=document.getElementById(`qc-${q}`);
+  if(card) card.classList.add('answered');
+  updateProg();
+}
+
+/* ── Progress ─────────────────────────────────────────────────────────────── */
+function updateProg(){
+  const n=Object.keys(answers).length;
+  const pct=Math.round(n/72*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=`${n} of 72`;
+  document.getElementById('prog-pct').textContent=pct+'%';
+  document.getElementById('foot-n').textContent=n;
+  document.getElementById('nav-count').textContent=`${n} / 72`;
+  document.getElementById('btn-see').disabled=(n<72);
+}
+
+/* ── Submit with warning ─────────────────────────────────────────────────── */
+function submitAnyway(){
+  const n=Object.keys(answers).length;
+  if(n===72){showResults();return;}
+  if(confirm(`You have answered ${n} of 72 questions.\nUnanswered questions will count as 0.\n\nSee your results anyway?`))showResults();
+}
+
+/* ── Results ──────────────────────────────────────────────────────────────── */
+function showResults(){
+  const scored=GIFTS.map(g=>({
+    ...g,score:g.questions.reduce((s,q)=>s+(answers[q]||0),0)
+  })).sort((a,b)=>b.score-a.score);
+
+  const top3=scored.slice(0,3);
+  const topLetters=new Set(top3.map(g=>g.letter));
+
+  /* name */
+  const name=document.getElementById('student-name').value.trim();
+  const nd=document.getElementById('results-name-display');
+  if(name){nd.textContent=`Results for ${name}`;nd.style.display='inline-block';}
+  else nd.style.display='none';
+
+  /* ── top 3 cards ── */
+  const ribbons=["🥇 Top Gift","🥈 Second Gift","🥉 Third Gift"];
+  document.getElementById('top3-section').innerHTML=top3.map((g,i)=>`
+    <div class="top3-card">
+      <div class="top3-ribbon">${ribbons[i]}</div>
+      <div class="top3-body">
+        <div class="top3-circle">${g.letter}</div>
+        <div class="top3-name">${g.name}</div>
+        <div class="top3-score-big">${g.score}</div>
+        <div class="top3-score-sub">out of 15</div>
+        <div class="top3-mini-bar"><div class="top3-mini-fill" style="width:${Math.round(g.score/15*100)}%"></div></div>
+        <div class="top3-desc">${g.desc}</div>
+        <div class="top3-verse">${g.verse}</div>
       </div>
-    `;
-    list.appendChild(card);
-  });
-  updateProgress();
-}
-
-function ratingLabel(v) {
-  return ["","Almost Never","Seldom","Sometimes","Frequently","Almost Always"][v];
-}
-
-/* ── Handle a rating click ───────────────────────────────────────────────────── */
-function rate(qNum, val) {
-  answers[qNum] = val;
-
-  // Update button styles
-  document.querySelectorAll(`[data-q="${qNum}"]`).forEach(btn => {
-    btn.classList.toggle('selected', parseInt(btn.dataset.v) === val);
-  });
-
-  // Mark card as answered
-  const card = document.getElementById(`q-card-${qNum}`);
-  if (card) card.classList.add('answered');
-
-  updateProgress();
-}
-
-/* ── Update progress bar + counters ─────────────────────────────────────────── */
-function updateProgress() {
-  const n = Object.keys(answers).length;
-  const pct = Math.round(n / 72 * 100);
-
-  document.getElementById('progress-bar').style.width = pct + '%';
-  document.getElementById('progress-label').textContent = n;
-  document.getElementById('footer-answered').textContent = n;
-  document.getElementById('nav-count').textContent = `${n} / 72 answered`;
-
-  const btn = document.getElementById('btn-submit');
-  btn.disabled = (n < 72);
-}
-
-/* ── Submit with warning if incomplete ──────────────────────────────────────── */
-function submitAnyway() {
-  const n = Object.keys(answers).length;
-  if (n === 72) { showResults(); return; }
-  if (confirm(`You have answered ${n} of 72 questions. Unanswered questions will count as 0.\n\nSee your results anyway?`)) {
-    showResults();
-  }
-}
-
-/* ── Calculate scores and show results ──────────────────────────────────────── */
-function showResults() {
-  // Calculate raw scores
-  const scores = GIFTS.map(g => {
-    const total = g.questions.reduce((sum, q) => sum + (answers[q] || 0), 0);
-    return { ...g, score: total };
-  });
-
-  // Sort descending
-  scores.sort((a, b) => b.score - a.score);
-
-  const top3 = scores.slice(0, 3);
-
-  // Name
-  const name = document.getElementById('student-name').value.trim();
-  document.getElementById('results-name').textContent = name ? `Results for ${name}` : '';
-
-  // ── Top 3 cards ──────────────────────────────────────────────────────────────
-  const badges = ["🥇 Top Gift", "🥈 2nd Gift", "🥉 3rd Gift"];
-  document.getElementById('top3-section').innerHTML = `
-    <div class="top3-grid">
-      ${top3.map((g, i) => `
-        <div class="top3-card">
-          <div class="top3-badge">${badges[i]}</div>
-          <div class="top3-letter">${g.letter}</div>
-          <div class="top3-name">${g.name}</div>
-          <div class="top3-score">${g.score}<span style="font-size:13px;font-weight:400;color:#888"> / 15</span></div>
-          <div class="top3-score-label">${scoreBar(g.score)}</div>
-          <div class="top3-desc">${g.desc}</div>
-          <div class="top3-verse"><em>${g.verse}</em></div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-
-  // ── All gifts ranked ──────────────────────────────────────────────────────────
-  document.getElementById('all-gifts-list').innerHTML = scores.map((g, i) => `
-    <div class="gift-row ${i < 3 ? 'highlight' : ''}">
-      <div class="gift-letter-badge">${g.letter}</div>
-      <div class="gift-name-col">${g.name}</div>
-      <div class="gift-bar-wrap">
-        <div class="gift-bar-bg">
-          <div class="gift-bar-fill" style="width:${Math.round(g.score / 15 * 100)}%"></div>
-        </div>
-      </div>
-      <div class="gift-score-label">${g.score}</div>
     </div>
   `).join('');
 
-  showScreen('screen-results');
+  /* ── all scores ── */
+  document.getElementById('all-scores').innerHTML=scored.map((g,i)=>`
+    <div class="gift-row ${i<3?'top-gift':''}">
+      <div class="g-badge">${g.letter}</div>
+      <div class="g-name">${g.name}</div>
+      <div class="g-bar"><div class="g-track"><div class="g-fill" data-w="${Math.round(g.score/15*100)}"></div></div></div>
+      <div class="g-score">${g.score}</div>
+    </div>
+  `).join('');
+
+  /* ── gift reference guide ── */
+  document.getElementById('guide-grid').innerHTML=scored.map(g=>`
+    <div class="guide-card ${topLetters.has(g.letter)?'is-top':''}">
+      <div class="guide-card-head">
+        <div class="gc-circle">${g.letter}</div>
+        <div class="gc-info">
+          <div class="gc-name">${g.name}</div>
+          <div class="gc-score-row">
+            <span class="gc-score">${g.score} / 15</span>
+            <div class="gc-mini"><div class="gc-mini-fill" style="width:${Math.round(g.score/15*100)}%"></div></div>
+          </div>
+        </div>
+        ${topLetters.has(g.letter)?'<span class="gc-top-tag">Top Gift</span>':''}
+      </div>
+      <div class="gc-desc">${g.desc}</div>
+      <div class="gc-verse">${g.verse}</div>
+    </div>
+  `).join('');
+
+  show('screen-results');
+
+  /* Animate score bars after render */
+  setTimeout(()=>{
+    document.querySelectorAll('.g-fill').forEach(el=>{
+      el.style.width=el.dataset.w+'%';
+    });
+  },120);
 }
 
-/* ── Score to emoji bar ─────────────────────────────────────────────────────── */
-function scoreBar(score) {
-  const filled = Math.round(score / 15 * 5);
-  return '⬛'.repeat(filled) + '⬜'.repeat(5 - filled);
-}
-
-/* ── Start over ──────────────────────────────────────────────────────────────── */
-function startOver() {
-  Object.keys(answers).forEach(k => delete answers[k]);
-  document.getElementById('student-name').value = '';
-  showScreen('screen-welcome');
+/* ── Start over ──────────────────────────────────────────────────────────── */
+function startOver(){
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  document.getElementById('student-name').value='';
+  show('screen-welcome');
 }
 </script>
 </body>
