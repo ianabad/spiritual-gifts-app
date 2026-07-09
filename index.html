@@ -446,7 +446,7 @@ body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(-
         <div class="topbar-tag">Spiritual Gifts Assessment</div>
       </div>
     </div>
-    <div class="topbar-pill">72 Questions</div>
+    <div class="topbar-pill">69 Questions</div>
   </nav>
   <div class="gold-strip"></div>
 
@@ -478,7 +478,7 @@ body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(-
       <h3>How It Works</h3>
       <div class="step"><div class="step-dot">1</div><p>Read each statement. Be honest — answer based on how you <em>actually</em> are, not how you think you should be.</p></div>
       <div class="step"><div class="step-dot">2</div><p>Click a number from <strong>1 to 5</strong> next to each statement using the rating scale above.</p></div>
-      <div class="step"><div class="step-dot">3</div><p>Complete all 72 statements, then tap <strong>See My Results</strong>.</p></div>
+      <div class="step"><div class="step-dot">3</div><p>Complete all 69 statements, then tap <strong>See My Results</strong>.</p></div>
       <div class="step"><div class="step-dot">4</div><p>Review your top gifts and talk to a leader at Faith Life about connecting to ministry!</p></div>
     </div>
 
@@ -501,13 +501,13 @@ body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(-
         <div class="topbar-tag">Spiritual Gifts Assessment</div>
       </div>
     </div>
-    <div class="topbar-pill" id="nav-count">0 / 72</div>
+    <div class="topbar-pill" id="nav-count">0 / 69</div>
   </nav>
   <div class="gold-strip"></div>
 
   <div class="assess-meta">
     <div class="prog-info">
-      <span>Progress — <strong id="prog-label">0 of 72</strong> answered</span>
+      <span>Progress — <strong id="prog-label">0 of 69</strong> answered</span>
       <span id="prog-pct">0%</span>
     </div>
     <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
@@ -516,7 +516,7 @@ body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(-
   <div class="qs-wrap" id="qs-list"></div>
 
   <div class="assess-foot">
-    <div class="foot-count"><b id="foot-n">0</b> / 72 answered</div>
+    <div class="foot-count"><b id="foot-n">0</b> / 69 answered</div>
     <div class="foot-right">
       <button class="btn-skip" onclick="submitAnyway()">Skip unanswered &amp; see results</button>
       <button class="btn-see" id="btn-see" onclick="showResults()" disabled>See My Results &rarr;</button>
@@ -613,127 +613,124 @@ const QUESTIONS = [
   [20,"The willful sin of others greatly concerns me."],
   [21,"I enjoy serving behind the scenes."],
   [22,"I like creating outlines and in-depth studies of the Bible."],
-  [23,"God has used me to pray in a heavenly language."],
-  [24,"I enjoy Proverbs more than any other book in the Bible."],
-  [25,"I am passionate about managing details."],
-  [26,"I prefer to pioneer new ministry projects."],
-  [27,"I consider myself a craftsman or craftswoman."],
-  [28,"I sense when situations are spiritually unhealthy."],
-  [29,"I am greatly concerned about seeing the lost saved."],
-  [30,"I try to come across as loving and caring."],
-  [31,"Asking God for a list of big things is exciting to me."],
-  [32,"I find ways to give offerings above my tithe."],
-  [33,"I believe miraculous healing is for today."],
-  [34,"Helping others is one of my greatest achievements."],
-  [35,"Creating a warm and welcoming home is important to me."],
-  [36,"I am burdened to pray for situations in the world."],
-  [37,"People seek me out to learn more about God's Kingdom."],
-  [38,"I prefer to take the lead whenever necessary."],
-  [39,"I am very sensitive to sad stories."],
-  [40,"Miracles often happen when I am nearby."],
-  [41,"Living in another country to share the gospel excites me."],
-  [42,"I desire to serve the church through worship."],
-  [43,"I enjoy connecting, caring for, and coaching others."],
-  [44,"Confronting someone about sin in their life is not hard for me."],
-  [45,"It bothers me when people sit around and do nothing."],
-  [46,"I share Biblical truth in hopes of others' personal growth."],
-  [47,"I pray in tongues daily."],
-  [48,"When I study Scripture, God gives me unique insights."],
-  [49,"Creating a task list is easy and enjoyable for me."],
-  [50,"I am drawn to ministries that start new churches."],
-  [51,"Building something with my hands is very rewarding to me."],
-  [52,"I can pinpoint issues or problems before others."],
-  [53,"I enjoy sharing the gospel with total strangers."],
-  [54,"I look for ways to encourage other people."],
-  [55,"I trust that God has my back in every situation."],
-  [56,"Making more money means I can give more."],
-  [57,"God has used me to bring healing to the sick."],
-  [58,"Being part of the process is fulfilling to me."],
-  [59,"I tend to make total strangers feel at home."],
-  [60,"People often describe me as a prayer warrior."],
-  [61,"I enjoy knowing biblical details and helping others understand."],
-  [62,"I delegate responsibilities to accomplish tasks."],
-  [63,"I am motivated to help those who are less fortunate."],
-  [64,"I have a constant hunger to see God's miraculous power."],
-  [65,"I focus a lot on reaching the world for Christ."],
-  [66,"I gain deep satisfaction from leading others in worship."],
-  [67,"I enjoy walking with someone through difficult times."],
-  [68,"I enjoy hearing passionate and clear preaching of the truth."],
-  [69,"I like to do small things that others pass over."],
-  [70,"I prefer to teach the Bible topically over verse-by-verse."],
-  [71,"Praying in the Spirit is encouraging and important to me."],
-  [72,"When facing difficulty, I tend to make wise decisions."],
+  [23,"I enjoy Proverbs more than any other book in the Bible."],
+  [24,"I am passionate about managing details."],
+  [25,"I prefer to pioneer new ministry projects."],
+  [26,"I consider myself a craftsman or craftswoman."],
+  [27,"I sense when situations are spiritually unhealthy."],
+  [28,"I am greatly concerned about seeing the lost saved."],
+  [29,"I try to come across as loving and caring."],
+  [30,"Asking God for a list of big things is exciting to me."],
+  [31,"I find ways to give offerings above my tithe."],
+  [32,"I believe miraculous healing is for today."],
+  [33,"Helping others is one of my greatest achievements."],
+  [34,"Creating a warm and welcoming home is important to me."],
+  [35,"I am burdened to pray for situations in the world."],
+  [36,"People seek me out to learn more about God's Kingdom."],
+  [37,"I prefer to take the lead whenever necessary."],
+  [38,"I am very sensitive to sad stories."],
+  [39,"Miracles often happen when I am nearby."],
+  [40,"Living in another country to share the gospel excites me."],
+  [41,"I desire to serve the church through worship."],
+  [42,"I enjoy connecting, caring for, and coaching others."],
+  [43,"Confronting someone about sin in their life is not hard for me."],
+  [44,"It bothers me when people sit around and do nothing."],
+  [45,"I share Biblical truth in hopes of others' personal growth."],
+  [46,"When I study Scripture, God gives me unique insights."],
+  [47,"Creating a task list is easy and enjoyable for me."],
+  [48,"I am drawn to ministries that start new churches."],
+  [49,"Building something with my hands is very rewarding to me."],
+  [50,"I can pinpoint issues or problems before others."],
+  [51,"I enjoy sharing the gospel with total strangers."],
+  [52,"I look for ways to encourage other people."],
+  [53,"I trust that God has my back in every situation."],
+  [54,"Making more money means I can give more."],
+  [55,"God has used me to bring healing to the sick."],
+  [56,"Being part of the process is fulfilling to me."],
+  [57,"I tend to make total strangers feel at home."],
+  [58,"People often describe me as a prayer warrior."],
+  [59,"I enjoy knowing biblical details and helping others understand."],
+  [60,"I delegate responsibilities to accomplish tasks."],
+  [61,"I am motivated to help those who are less fortunate."],
+  [62,"I have a constant hunger to see God's miraculous power."],
+  [63,"I focus a lot on reaching the world for Christ."],
+  [64,"I gain deep satisfaction from leading others in worship."],
+  [65,"I enjoy walking with someone through difficult times."],
+  [66,"I enjoy hearing passionate and clear preaching of the truth."],
+  [67,"I like to do small things that others pass over."],
+  [68,"I prefer to teach the Bible topically over verse-by-verse."],
+  [69,"When facing difficulty, I tend to make wise decisions."],
 ];
 
 /* ── Gifts A–X (no W) ─────────────────────────────────────────────────────── */
 const GIFTS = [
-  {letter:"A",name:"Administration",questions:[1,25,49],
+  {letter:"A",name:"Administration",questions:[1,24,47],
    desc:"The divine ability to organize multiple tasks and groups of people to accomplish ministry goals efficiently and effectively.",
    verse:"Luke 14:28-30; Acts 6:1-7"},
-  {letter:"B",name:"Apostleship",questions:[2,26,50],
+  {letter:"B",name:"Apostleship",questions:[2,25,48],
    desc:"The divine ability to pioneer new churches and ministries through planting, overseeing, and training — often in new or unreached contexts.",
    verse:"Acts 15:22-35; Ephesians 4:11-14"},
-  {letter:"C",name:"Craftsmanship",questions:[3,27,51],
+  {letter:"C",name:"Craftsmanship",questions:[3,26,49],
    desc:"The divine ability to plan, build, and work skillfully with your hands in construction or creative environments to advance ministry.",
    verse:"Exodus 31:3-11; Acts 18:2-3"},
-  {letter:"D",name:"Discernment",questions:[4,28,52],
+  {letter:"D",name:"Discernment",questions:[4,27,50],
    desc:"The divine ability to spiritually identify falsehood and distinguish between right and wrong motives, truth and deception, in people and situations.",
    verse:"Acts 5:1-11; 1 Corinthians 12:10; 1 John 4:1-6"},
-  {letter:"E",name:"Evangelism",questions:[5,29,53],
+  {letter:"E",name:"Evangelism",questions:[5,28,51],
    desc:"The divine ability to help non-believers take the necessary steps to a saving faith in Jesus Christ through clear and compassionate sharing of the Gospel.",
    verse:"Acts 8:26-40; Ephesians 4:11-14"},
-  {letter:"F",name:"Exhortation",questions:[6,30,54],
+  {letter:"F",name:"Exhortation",questions:[6,29,52],
    desc:"The divine ability to encourage, comfort, and strengthen others through spoken or written words grounded in Biblical truth.",
    verse:"Romans 12:8; 1 Timothy 4:13; Hebrews 10:24-25"},
-  {letter:"G",name:"Faith",questions:[7,31,55],
+  {letter:"G",name:"Faith",questions:[7,30,53],
    desc:"The divine ability to believe God for unseen supernatural results in every area of life — trusting Him fully when others hesitate.",
    verse:"Romans 4:18-21; 1 Corinthians 12:9; Hebrews 11"},
-  {letter:"H",name:"Giving",questions:[8,32,56],
+  {letter:"H",name:"Giving",questions:[8,31,54],
    desc:"The divine ability to generate wealth and give generously — by tithes, offerings, and sacrifice — for the purpose of advancing God's Kingdom on earth.",
    verse:"Mark 12:41-44; Romans 12:8; 2 Corinthians 8:1-7"},
-  {letter:"I",name:"Healing",questions:[9,33,57],
+  {letter:"I",name:"Healing",questions:[9,32,55],
    desc:"The divine ability to act as an intermediary through faith and prayer for the healing of physical and mental illness — by the laying on of hands and intercession.",
    verse:"Acts 3:1-10; 1 Corinthians 12:9, 28"},
-  {letter:"J",name:"Helps",questions:[10,34,58],
+  {letter:"J",name:"Helps",questions:[10,33,56],
    desc:"The divine ability to work in a supportive, behind-the-scenes role that enables others to use their gifts and advance the ministry effectively.",
    verse:"Mark 15:40-41; Romans 16:1-2; 1 Corinthians 12:28"},
-  {letter:"K",name:"Hospitality",questions:[11,35,59],
+  {letter:"K",name:"Hospitality",questions:[11,34,57],
    desc:"The divine ability to create warm, welcoming, and safe environments for others — in your home, your church, or any space you inhabit.",
    verse:"Romans 12:13; Hebrews 13:1-2; 1 Peter 4:9"},
-  {letter:"L",name:"Intercession",questions:[12,36,60],
+  {letter:"L",name:"Intercession",questions:[12,35,58],
    desc:"The divine ability to stand in the gap in sustained, fervent prayer for people, situations, or places — believing God for profound and lasting results.",
    verse:"Hebrews 7:25; Colossians 4:12-13; James 5:14-16"},
-  {letter:"M",name:"Knowledge",questions:[13,37,61],
+  {letter:"M",name:"Knowledge",questions:[13,36,59],
    desc:"The divine ability to understand and bring clarity to situations and circumstances, often accompanied by a specific word or insight from God.",
    verse:"Acts 5:1-11; 1 Corinthians 12:8; Colossians 2:2-3"},
-  {letter:"N",name:"Leadership",questions:[14,38,62],
+  {letter:"N",name:"Leadership",questions:[14,37,60],
    desc:"The divine ability to influence people and direct them — at their level — toward the vision or goal God has placed before the community.",
    verse:"Romans 12:8; 1 Timothy 3:1-13; Hebrews 13:17"},
-  {letter:"O",name:"Mercy",questions:[15,39,63],
+  {letter:"O",name:"Mercy",questions:[15,38,61],
    desc:"The divine ability to feel deep empathy and to actively care for those who are hurting, grieving, marginalized, or in any form of need.",
    verse:"Matthew 9:35-36; Romans 12:8; 1 Thessalonians 5:14"},
-  {letter:"P",name:"Miracles",questions:[16,40,64],
+  {letter:"P",name:"Miracles",questions:[16,39,62],
    desc:"The divine ability to alter natural outcomes through faith, prayer, and God's direction — witnessing and participating in the supernatural work of God.",
    verse:"Acts 9:36-42; Romans 15:18-19; 1 Corinthians 12:10"},
-  {letter:"Q",name:"Missionary",questions:[17,41,65],
+  {letter:"Q",name:"Missionary",questions:[17,40,63],
    desc:"The divine ability to reach people outside your culture and nationality for Christ — often by dwelling among them and serving within their community.",
    verse:"Acts 8:4, 13:2-3; Romans 10:15"},
-  {letter:"R",name:"Music / Worship",questions:[18,42,66],
+  {letter:"R",name:"Music / Worship",questions:[18,41,64],
    desc:"The divine ability to sing, play an instrument, or lead through music in a way that draws others into genuine encounter and worship of God.",
    verse:"1 Chronicles 16:41-42; Psalm 150; Ephesians 5:19"},
-  {letter:"S",name:"Pastor / Shepherd",questions:[19,43,67],
+  {letter:"S",name:"Pastor / Shepherd",questions:[19,42,65],
    desc:"The divine ability to nurture, care for, and walk alongside others through the personal details of their spiritual journey and life struggles.",
    verse:"John 10:1-18; Ephesians 4:11-14; 1 Peter 5:1-3"},
-  {letter:"T",name:"Prophecy",questions:[20,44,68],
+  {letter:"T",name:"Prophecy",questions:[20,43,66],
    desc:"The divine ability to boldly and clearly proclaim Scriptural truth — calling people to repentance, conviction, and faithfulness to God's Word.",
    verse:"1 Corinthians 14:1-4; 1 Thessalonians 1:5"},
-  {letter:"U",name:"Service",questions:[21,45,69],
+  {letter:"U",name:"Service",questions:[21,44,67],
    desc:"The divine ability to meet practical needs — great or small — in ways that free others to use their gifts and build up the whole body of Christ.",
    verse:"Acts 6:1-7; Romans 12:7; Galatians 6:10; Titus 3:14"},
-  {letter:"V",name:"Teaching",questions:[22,46,70],
+  {letter:"V",name:"Teaching",questions:[22,45,68],
    desc:"The divine ability to study, understand, and communicate Scripture in ways that produce clarity, depth of understanding, and growth in other believers.",
    verse:"Acts 18:24-28; 1 Corinthians 12:28; Ephesians 4:11-14"},
-  {letter:"X",name:"Wisdom",questions:[24,48,72],
+  {letter:"X",name:"Wisdom",questions:[23,46,69],
    desc:"The divine ability to apply the truths of Scripture in practical, life-giving ways — producing the character and outcomes of Jesus Christ in real situations.",
    verse:"Acts 6:3, 10; 1 Corinthians 2:6-13, 12:8"},
 ];
@@ -760,11 +757,11 @@ function buildQuestions(){
   list.innerHTML='';
   const groups=[
     {label:"Questions 1 – 12",range:[1,12]},
-    {label:"Questions 13 – 24",range:[13,24]},
-    {label:"Questions 25 – 36",range:[25,36]},
-    {label:"Questions 37 – 48",range:[37,48]},
-    {label:"Questions 49 – 60",range:[49,60]},
-    {label:"Questions 61 – 72",range:[61,72]},
+    {label:"Questions 13 – 23",range:[13,23]},
+    {label:"Questions 24 – 35",range:[24,35]},
+    {label:"Questions 36 – 46",range:[36,46]},
+    {label:"Questions 47 – 58",range:[47,58]},
+    {label:"Questions 59 – 69",range:[59,69]},
   ];
   groups.forEach(g=>{
     const lbl=document.createElement('div');
@@ -801,20 +798,20 @@ function rate(q,v){
 /* ── Progress ─────────────────────────────────────────────────────────────── */
 function updateProg(){
   const n=Object.keys(answers).length;
-  const pct=Math.round(n/72*100);
+  const pct=Math.round(n/69*100);
   document.getElementById('prog-fill').style.width=pct+'%';
-  document.getElementById('prog-label').textContent=`${n} of 72`;
+  document.getElementById('prog-label').textContent=`${n} of 69`;
   document.getElementById('prog-pct').textContent=pct+'%';
   document.getElementById('foot-n').textContent=n;
-  document.getElementById('nav-count').textContent=`${n} / 72`;
-  document.getElementById('btn-see').disabled=(n<72);
+  document.getElementById('nav-count').textContent=`${n} / 69`;
+  document.getElementById('btn-see').disabled=(n<69);
 }
 
 /* ── Submit with warning ─────────────────────────────────────────────────── */
 function submitAnyway(){
   const n=Object.keys(answers).length;
-  if(n===72){showResults();return;}
-  if(confirm(`You have answered ${n} of 72 questions.\nUnanswered questions will count as 0.\n\nSee your results anyway?`))showResults();
+  if(n===69){showResults();return;}
+  if(confirm(`You have answered ${n} of 69 questions.\nUnanswered questions will count as 0.\n\nSee your results anyway?`))showResults();
 }
 
 /* ── Results ──────────────────────────────────────────────────────────────── */
